@@ -8,6 +8,7 @@ public class CameraMove : MonoBehaviour
     public GameObject paintUI;  // 활성화 시킬 UI 지정
 
     FirstPersonController fpc;  // 플레이어 컨트롤러 컴포넌트 지정
+    Highlight hl;
 
 
     void Start()
@@ -29,9 +30,12 @@ public class CameraMove : MonoBehaviour
         // 레이가 해당 그림의 버튼과 층돌했을때
         if (isHit)
         {
-            // 충돌한 대상의 이름이 " " 라면
+            // 충돌한 대상의 Tag가 "Button"이라면
             if (hitInfo.transform.CompareTag("Button"))
             {
+                hl = hitInfo.transform.GetComponent<Highlight>();
+                hl.highlight.SetActive(true);
+
                 // E 버튼을 누르면
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -47,6 +51,10 @@ public class CameraMove : MonoBehaviour
                     // 플레이어의 움직임 컴포넌트를 비활성화 한다.
                     fpc.enabled = false;
                 }
+            }
+            else if (hl != null)
+            {
+                hl.highlight.SetActive(false);
             }
         }
     }
