@@ -30,7 +30,7 @@ public class CameraMove : MonoBehaviour
         if (isHit)
         {
             // 충돌한 대상의 이름이 " " 라면
-            if (hitInfo.transform.name == "Button")
+            if (hitInfo.transform.CompareTag("Button"))
             {
                 // E 버튼을 누르면
                 if (Input.GetKeyDown(KeyCode.E))
