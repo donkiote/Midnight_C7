@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public GameObject buttonObj;  // 인식할 버튼 오브젝트를 지정
-    public GameObject canvasUI;  // 활성화 시킬 UI 지정
+    public GameObject paintUI;  // 활성화 시킬 UI 지정
 
     FirstPersonController fpc;  // 플레이어 컨트롤러 컴포넌트 지정
 
@@ -37,9 +37,9 @@ public class CameraMove : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
 
                 // 그림의 UI가 출력된다.
-                if (canvasUI != null)
+                if (paintUI != null)
                 {
-                    canvasUI.SetActive(true);
+                    paintUI.SetActive(true);
                 }
 
                 // 플레이어의 움직임 컴포넌트를 비활성화 한다.

@@ -6,6 +6,7 @@ using UnityEngine;
 public class SystemManager : MonoBehaviour
 {
     public GameObject player;
+    public GameObject paintUI;
 
     FirstPersonController fpc;
 
@@ -15,9 +16,9 @@ public class SystemManager : MonoBehaviour
         fpc = player.GetComponent<FirstPersonController>();
     }
 
-
-    public void PlayerControl()
+    public void ExitButton()
     {
-
+        paintUI.SetActive(false);
+        fpc.enabled = true;
     }
 }
