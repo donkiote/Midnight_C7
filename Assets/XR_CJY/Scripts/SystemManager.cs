@@ -19,6 +19,7 @@ public class SystemManager : MonoBehaviour
     public void ExitButton()
     {
         paintUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         fpc.enabled = true;
     }
 }

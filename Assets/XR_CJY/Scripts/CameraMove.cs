@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public GameObject buttonObj;  // 인식할 버튼 오브젝트를 지정
     public GameObject paintUI;  // 활성화 시킬 UI 지정
 
     FirstPersonController fpc;  // 플레이어 컨트롤러 컴포넌트 지정
@@ -28,22 +27,26 @@ public class CameraMove : MonoBehaviour
         bool isHit = Physics.Raycast(ray, out hitInfo, 10, ~(1 << 7));
 
         // 레이가 해당 그림의 버튼과 층돌했을때
-        if (isHit == buttonObj)
+        if (isHit)
         {
-            // E 버튼을 누르면
-            if (Input.GetKeyDown(KeyCode.E))
+            // 충돌한 대상의 이름이 " " 라면
+            if (hitInfo.transform.name == "Button")
             {
-                // 마우스 커서 활성화
-                Cursor.lockState = CursorLockMode.None;
-
-                // 그림의 UI가 출력된다.
-                if (paintUI != null)
+                // E 버튼을 누르면
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    paintUI.SetActive(true);
-                }
+                    // 마우스 커서 활성화
+                    Cursor.lockState = CursorLockMode.None;
 
-                // 플레이어의 움직임 컴포넌트를 비활성화 한다.
-                fpc.enabled = false;
+                    // 그림의 UI가 출력된다.
+                    if (paintUI != null)
+                    {
+                        paintUI.SetActive(true);
+                    }
+
+                    // 플레이어의 움직임 컴포넌트를 비활성화 한다.
+                    fpc.enabled = false;
+                }
             }
         }
     }
