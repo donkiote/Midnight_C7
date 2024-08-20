@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2814430871219013980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 1903725538272476388}
   - component: {fileID: 6415585081931228884}
   - component: {fileID: 5424052432979470755}
+  - component: {fileID: 6822824791197967251}
   m_Layer: 7
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -366,3 +367,15 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6822824791197967251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7837517140239014333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a7476d49426e049b837fcc355e94ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
