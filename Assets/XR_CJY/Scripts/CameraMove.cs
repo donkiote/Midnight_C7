@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public GameObject paintUI;  // 활성화 시킬 UI 지정
-
     FirstPersonController fpc;  // 플레이어 컨트롤러 컴포넌트 지정
     Highlight hl;
 
@@ -30,8 +28,8 @@ public class CameraMove : MonoBehaviour
         // 레이가 해당 그림의 버튼과 층돌했을때
         if (isHit)
         {
-            // 충돌한 대상의 Tag가 "Button"이라면
-            if (hitInfo.transform.CompareTag("Button"))
+            // 충돌한 대상의 이름이 " " 이라면
+            if (hitInfo.transform.name == "Button")
             {
                 hl = hitInfo.transform.GetComponent<Highlight>();
                 hl.highlight.SetActive(true);
@@ -43,10 +41,10 @@ public class CameraMove : MonoBehaviour
                     // 마우스 커서 활성화
                     Cursor.lockState = CursorLockMode.None;
 
-                    // 그림의 UI가 출력된다.
-                    if (paintUI != null)
+                    // 해당 그림의 UI가 출력된다.
+                    if (hl.paintUI != null)
                     {
-                        paintUI.SetActive(true);
+                        hl.paintUI.SetActive(true);
                     }
 
                     // 플레이어의 움직임 컴포넌트를 비활성화 한다.

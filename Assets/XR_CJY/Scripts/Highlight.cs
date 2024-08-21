@@ -6,4 +6,5 @@ public class Highlight : MonoBehaviour
 {
     public GameObject highlight;
     public GameObject pressE;
+    public GameObject paintUI;
 }
