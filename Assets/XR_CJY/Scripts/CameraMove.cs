@@ -59,7 +59,7 @@ public class CameraMove : MonoBehaviour
                 fpc.enabled = false;
             }
         }
-        // 충돌한 대상에 Highlight 컴포넌트가 없다면
+        // 그렇지 않다면
         else if (hl != null)
         {
             hl.highlight.gameObject.SetActive(false);  // 하이라이트 효과 오브젝트를 비활성화한다.
