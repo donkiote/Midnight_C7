@@ -5,4 +5,5 @@ using UnityEngine;
 public class Highlight : MonoBehaviour
 {
     public GameObject highlight;
+    public GameObject pressE;
 }
