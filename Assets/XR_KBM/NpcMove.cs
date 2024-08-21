@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -20,12 +21,14 @@ public class NpcMove : MonoBehaviour
     Animator anim;
 
     public GameObject[] destination;
-    private Vector3[] wayPoints;
+    public Vector3[] wayPoints;
+    //오리진
+    int currWayPoint = 0;
+    private float currTime;
 
-    //int currPoint = 0;
-    //현재시간
-    //float currTime;
-    // Start is called before the first frame update
+    public GameObject[] arts;
+    public GameObject closestObject;
+
     void Start()
     {
         currState = ENpcState_BM.Walk;
@@ -39,7 +42,12 @@ public class NpcMove : MonoBehaviour
         wayPoints[wayPoints.Length - 1] = transform.position;
 
 
-    }
+        agent.SetDestination(wayPoints[currWayPoint]);
+
+        arts =GameObject.FindGameObjectsWithTag("art");
+       
+
+}
 
     // Update is called once per frame
     void Update()
@@ -68,6 +76,7 @@ public class NpcMove : MonoBehaviour
         {
             case ENpcState_BM.Walk:
                 anim.SetTrigger("Walk");
+                agent.SetDestination(wayPoints[currWayPoint]);
                 break;
             case ENpcState_BM.Nod:
                 anim.SetTrigger("Nod");
@@ -84,42 +93,107 @@ public class NpcMove : MonoBehaviour
     }
     void UpdateNod()
     {
-        /*currTime += Time.deltaTime;
-        if (currTime >= 5)
+        currTime += Time.deltaTime;
+        if (currTime >= 2)
         {
             currTime = 0;
-            
-        }*/
+            currWayPoint++;
+            if(currWayPoint >= wayPoints.Length)
+            {
+                currWayPoint = 0;
+            }
+            //currWayPoint %= wayPoints.Length;
+            ChangState(ENpcState_BM.Walk);            
+        }
         
-        ChangState(ENpcState_BM.Walk);
     }
+    //float s_currTime;
     void UpdateSurprised()
     {
-        ChangState(ENpcState_BM.Walk);
+        currTime += Time.deltaTime;
+        if (currTime >= 2)
+        {
+            currTime = 0;
+            currWayPoint++;
+            if (currWayPoint >= wayPoints.Length)
+            {
+                currWayPoint = 0;
+            }
+            //currWayPoint %= wayPoints.Length;
+            ChangState(ENpcState_BM.Walk);
+        }
+        
     }
     void Patrol()
     {
-        for (int i = 0; i < wayPoints.Length; i++)
+        if (Vector3.Distance(transform.position, wayPoints[currWayPoint]) <= 0.1f)
         {
-            if (Vector3.Distance(transform.position, wayPoints[i]) <= 0.1f)
+            //ChangState(ENpcState_BM.Nod);
+            if (currWayPoint != 2)
             {
-                if (i != wayPoints.Length - 1)
-                {
-                    
-                    agent.SetDestination(wayPoints[i + 1]);
-                    ChangState(ENpcState_BM.Nod);
-                    
+                ChangState(ENpcState_BM.Nod);
+                //ChangState(ENpcState_BM.Surprised);
+            }
+            else
+            {
+                ChangState(ENpcState_BM.Surprised);
 
-                }
-                else
+            }
+
+            closestObject = FindClosestObject();
+            if (closestObject != null)
+            {
+                // 가장 가까운 오브젝트를 바라봄
+                Vector3 look = closestObject.transform.position - transform.position;
+                look.y = 0;
+                look.Normalize();
+                transform.forward = look;
+                //transform.LookAt(closestObject.transform);
+            }
+
+        }
+        //for (int i = 0; i < wayPoints.Length; i++)
+        //{
+        //    if (Vector3.Distance(transform.position, wayPoints[i]) <= 0.1f)
+        //    {
+        //        if (i != wayPoints.Length - 1)
+        //        {
+
+            //            agent.SetDestination(wayPoints[i + 1]);
+            //            ChangState(ENpcState_BM.Nod);
+
+
+            //        }
+            //        else
+            //        {
+            //            agent.SetDestination(wayPoints[0]);
+            //            //ChangState(ENpcState_BM.Nod);
+            //        }
+
+
+            //        //
+            //    }
+            //}
+    }
+    GameObject FindClosestObject()
+    {
+        GameObject closest = null;
+        float closestDistance = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (GameObject obj in arts)
+        {
+            if (obj != null) // 배열에 null이 포함되어 있을 수 있으므로 체크
+            {
+                float distance = Vector3.Distance(obj.transform.position, currentPosition);
+                if (distance < closestDistance)
                 {
-                    agent.SetDestination(wayPoints[0]);
-                    //ChangState(ENpcState_BM.Nod);
+                    closestDistance = distance;
+                    closest = obj;
                 }
-                    
-                
-                //
             }
         }
+
+        return closest;
     }
 }
