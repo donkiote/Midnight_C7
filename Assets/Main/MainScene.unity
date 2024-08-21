@@ -649,16 +649,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1289489818927031827, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
         type: 3}
       propertyPath: m_text
-      value: Press (E)
+      value: "(E) \uCEA1\uC158 \uBCF4\uAE30"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: a3eb749af70e256418dd14ec144da96e,
+      objectReference: {fileID: 11400000, guid: 87e4ebe045a026444a84a8cda9003235,
         type: 2}
     - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
         type: 3}
@@ -667,14 +677,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
         type: 3}
+      propertyPath: m_overflowMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -4665283814802816102, guid: a3eb749af70e256418dd14ec144da96e,
+      objectReference: {fileID: -8639581887590898926, guid: 87e4ebe045a026444a84a8cda9003235,
         type: 2}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_horizontalMapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1475679297156630114, guid: 501c074e37221134388d537fadee0086,
         type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3253924394500012892, guid: 501c074e37221134388d537fadee0086,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3410910881702922793, guid: 501c074e37221134388d537fadee0086,
         type: 3}
