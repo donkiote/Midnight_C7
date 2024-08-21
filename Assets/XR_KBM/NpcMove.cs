@@ -26,6 +26,12 @@ public class NpcMove : MonoBehaviour
     int currWayPoint = 0;
     private float currTime;
 
+    //Nod 크리에이트 타임
+    public float nodTime = 2f;
+    //서프라이즈 크이에이트 타임
+    public float surprisedTime = 4f;
+
+
     public GameObject[] arts;
     public GameObject closestObject;
 
@@ -94,7 +100,7 @@ public class NpcMove : MonoBehaviour
     void UpdateNod()
     {
         currTime += Time.deltaTime;
-        if (currTime >= 2)
+        if (currTime >= nodTime)
         {
             currTime = 0;
             currWayPoint++;
@@ -111,7 +117,7 @@ public class NpcMove : MonoBehaviour
     void UpdateSurprised()
     {
         currTime += Time.deltaTime;
-        if (currTime >= 2)
+        if (currTime >= surprisedTime)
         {
             currTime = 0;
             currWayPoint++;

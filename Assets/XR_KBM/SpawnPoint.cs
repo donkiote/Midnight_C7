@@ -15,6 +15,7 @@ public class SpawnPoint : MonoBehaviour
         //npc_s = Npc[0].GetComponent<NpcMove>();
         //6°³
         //Npc[0].SetActive(false);
+        
         StartCoroutine(Spawner());
     }
 
@@ -26,18 +27,18 @@ public class SpawnPoint : MonoBehaviour
 
     IEnumerator Spawner()
     {
-        while(true)
+        while (true)
         {
             GameObject npc = Npc[netNpc];
             npc.transform.position = this.transform.position;
             npc.SetActive(true);
 
             netNpc++;
-            if(netNpc >= Npc.Count)
+            if (netNpc >= Npc.Count)
             {
                 netNpc = 0;
             }
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(7);
 
         }
     }
