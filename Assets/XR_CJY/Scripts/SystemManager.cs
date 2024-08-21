@@ -6,10 +6,9 @@ using UnityEngine;
 public class SystemManager : MonoBehaviour
 {
     public GameObject player;
-    public GameObject paintUI;
 
     FirstPersonController fpc;
-
+    Highlight hl;
 
     void Start()
     {
@@ -18,7 +17,7 @@ public class SystemManager : MonoBehaviour
 
     public void ExitButton()
     {
-        paintUI.SetActive(false);
+        hl.paintUI.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         fpc.enabled = true;
     }
