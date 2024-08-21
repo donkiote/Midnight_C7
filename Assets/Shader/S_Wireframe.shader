@@ -1,4 +1,4 @@
-Shader "Custom/Wireframe"
+﻿Shader "Custom/Wireframe"
 {
     Properties
     {
@@ -67,7 +67,7 @@ Shader "Custom/Wireframe"
             fixed4 frag (g2f i) : SV_Target
             {
                 float minBary = min(min(i.barycentricCoords.x, i.barycentricCoords.y), i.barycentricCoords.z);
-                float delta = fwidth(minBary);
+                float delta = fwidth(minBary) * 0.5; // fwidth에 배수를 곱하여 더 넓게 만듦
                 float alpha = smoothstep(_WireframeThickness, _WireframeThickness + delta, minBary);
                 float4 wireColor = lerp(_WireframeColor, float4(0,0,0,0), alpha);
                 return wireColor;
