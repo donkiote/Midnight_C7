@@ -35,6 +35,7 @@ public class CameraMove : MonoBehaviour
             {
                 hl = hitInfo.transform.GetComponent<Highlight>();
                 hl.highlight.SetActive(true);
+                hl.pressE.SetActive(true);
 
                 // E 버튼을 누르면
                 if (Input.GetKeyDown(KeyCode.E))
@@ -55,6 +56,7 @@ public class CameraMove : MonoBehaviour
             else if (hl != null)
             {
                 hl.highlight.SetActive(false);
+                hl.pressE.SetActive(false);
             }
         }
     }
